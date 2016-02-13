@@ -18,7 +18,7 @@ a consul cluster of a minimum of 3 machines, sitting at data center level.
 ### features
 * service discovery
 * service health check
-* internal DNS lookup
+* DNS style service lookup
 * facilitating docker swarm discovery
 
 ### api
