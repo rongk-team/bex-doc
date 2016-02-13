@@ -1,42 +1,37 @@
-# what a cloud infrastructure provides?
+# what should cloud infrastructure provide?
 
 ## service registry and discovery
-essential as for other parties within to be aware of the service availability at any given time;
-also make dynamic resource allocation on the cloud more smooth
+it's essential to know what service and to what degree a service is available at any given time;
+also, it makes dynamic computing resource allocation on the cloud more smoothly
 
-## centrol logging
-essential for issue tracking and debugging;
-combined with alter module, make easy to spot errors and their precise locations & patterns in the cloud environment
+## central logging
+it's essential for issue tracking and debugging
 
 ## performance monitoring
-essential for detecting bottle necks, and where & when to and where & when not to allocation resource
+it's essential for detecting system bottlenecks, so that questions like where & when to and where & when not to allocation resource could be answered with confidence;
 
-# components
+# proposed components
 
-## consul
-a consul cluster of 3 machines
+## consul cluster
+a consul cluster of a minimum of 3 machines, sitting at data center level.
 
 ### features
 * service discovery
-* service healthiness check
-* internal DNS
-* connecting docker swarm
+* service health check
+* internal DNS lookup
+* facilitating docker swarm discovery
 
 ### api
-require a set of api to provide service query and update, including availability, health status, utilization.
-could be an independent api based on the one consul provided.
+a set of api is required to provide service query and update, including availability, health status, utilization, etc.
+could be an independent api based on what consul has already provided.
 
-## swarm
-a swarm master aggregate of 3 machines
-* a swarm cluster has a dependency on consul cluster for advertising and discovering swarm nodes
-* a swarm cluster can create and maintain application-specific interference-free overlay networks
-* registrator can be used to collect live container changes and report back to consul, serving as service registry
+## load balancer
+consul cluster should be accessed via its load balancer, for an individual node may fail at a given point.
 
-## load balancers
-consul cluster and swarm maters should be accessed respectively via their own load balancers, for any individual node may fail at a given point.
-
-## logging box
+## logging aggregator
 centralize log accessing and analyzing
+may use open source products or equivalents provided by cloud service provider
 
-## performance monitor box
-monitor server performance and status, in order to properly scale and quickly response to failures.
+## performance monitoring aggregator
+centralize server performance and status, in order to properly scale and quickly response to failures
+may use open source products or equivalents provided by cloud service provider
