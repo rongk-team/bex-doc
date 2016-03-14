@@ -25,22 +25,35 @@ need to be intergrated  with the current mobile message (**QRCode scan**, **In-M
 
 
  # message types
- * **notification** - instruction or information that business pass out to clients, through either push or web socket channel
+ * **notification** - instruction or information that business pass out to clients, through either push or web socket channel   
+ the count of notification is limited.
  * **chat**         - message from one client to another one or multiple clients, through web socket channel
  * **system control message** -  control messages, through web socket channel, disable the **devices|modules|user**
 
+
+
 # message sources
 * from queue module, e.g. notification
-* from user, e.g. chat
+* from user, e.g. chat   
+* from system, e.g. system control message.
+
 
 # message destination
 * to specific user, e.g. A send a message to B
 * to specific group, e.g. A send a message to a group named M.DM team.
 * to specific system call back handler, e.g.  the client send the log information back to system.
+* to device, e.g. try to disable some devices or some broadcast message to all devices.
+
 
 # message storage
 temporarily store messages uploaded from queue module or sent by clients, removed upon delivery, conditionally update delivery status, auto expiration, etc.   
 **TBD** - define storage format, state, and process flow diagram(of process unit).
+
+* message id (message which can be read by user)  
+
+* message status    
+
+
 
 
 # message receiver translator
@@ -62,10 +75,10 @@ temporarily store messages uploaded from queue module or sent by clients, remove
 
   # components
   1. balancer    
-     a set of api  using by clients before the connection is created.
-     it will assign the most light web socket server to client with the auth token.
-     the client can get use the auth token to generate the connection with assigned server.
-     the detail of balancer please read this document **[balancer]** -- TBD.
+     a set of api  using by clients before the connection is created.    
+     it will assign the most light web socket server to client with the auth token.    
+     the client can  use the auth token to generate the connection with assigned server.    
+     the detail of balancer please read this document **[balancer]** -- TBD.    
 
   2. web socket servers    
     a set of servers which handle the long-lived connections.
