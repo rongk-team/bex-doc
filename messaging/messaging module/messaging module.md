@@ -3,7 +3,6 @@ Describe the components of messaging module and the details
 
 # channel types
 * **push**        - one-off notification, from server to mobile devices    
-
 * **web socket**  - two-way connection, initiated by client, lasting for an extended period of time
 
 
@@ -21,7 +20,7 @@ a message contains these fields at least.
 7. version
 
 
-need to be intergrated  with the current mobile message (**QRCode can**, **In-Memory-Text Scan**) handle.
+need to be intergrated  with the current mobile message (**QRCode scan**, **In-Memory-Text Scan**, **app  invoke**) handle.
 
 
 
@@ -80,9 +79,11 @@ temporarily store messages uploaded from queue module or sent by clients, remove
      user: any 3rd part client want to send message to a specific user.
      support send single or multiple messages.
 
+     client: get the message detail by message Id (if the device is not active, we will send the message requests to client by push notification)
+
   5. storage
      1. storage all user and device relationship data    
-        user    --- marykay user     
+        user    --- Mary Kay user     
         app     --- application     
         device  --- user's device   
         connection ----  the active connection between web-socket server and device
@@ -90,8 +91,13 @@ temporarily store messages uploaded from queue module or sent by clients, remove
         waiting     
         sent    
         read    
-        failed    
+        failed  
 
 
-  6. process unit
-    a work flow
+  6. process unit    
+     a work flow to control the messaging logic.   
+
+     1. translate the user id into device id  
+     2. use device id into connection id
+     3. if the connection is not active, use the push notification service by aws SNS
+     4. else send the message by long-lived connections
