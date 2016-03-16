@@ -1,5 +1,7 @@
  # overview
-Describe the outline of the process unit
+Process unit processes pending tasks of deliverying messages which are created by API.
+
+It divides tasks into small sub-tasks then dispatch them to in-queue workers.
 
 ## workflow
 
