@@ -74,27 +74,27 @@ temporarily store messages uploaded from queue module or sent by clients, remove
 
 
   # components
-  1. balancer    
+  1. [balancer](https://github.com/rongk-team/bex-doc/blob/master/messaging/messaging%20module/components/balancer.md)    
      a set of api  using by clients before the connection is created.    
      it will assign the most light web socket server to client with the auth token.    
      the client can  use the auth token to generate the connection with assigned server.    
      the detail of balancer please read this document **[balancer]** -- TBD.    
 
-  2. web socket servers    
+  2. [web-socket servers](https://github.com/rongk-team/bex-doc/blob/master/messaging/messaging%20module/components/web%20socket%20servers.md)     
     a set of servers which handle the long-lived connections.
     the detail of long-lived connections please read this document **[long-lived connections]** -- TBD.
 
-  3. push service worker    
+  3. [push service worker](https://github.com/rongk-team/bex-doc/blob/master/messaging/messaging%20module/components/push%20service%20worker.md)    
      a set of workers which send the push notification by AWS push notification service
      the detail of push service please read this document **[push service workers]** -- TBD.
 
-  4. api    
+  4. [api](https://github.com/rongk-team/bex-doc/blob/master/messaging/messaging%20module/components/api.md)    
      user: any 3rd part client want to send message to a specific user.
      support send single or multiple messages.
 
      client: get the message detail by message Id (if the device is not active, we will send the message requests to client by push notification)
 
-  5. storage
+  5. [storage](https://github.com/rongk-team/bex-doc/blob/master/messaging/messaging%20module/components/storage.md)     
      1. storage all user and device relationship data    
         user    --- Mary Kay user     
         app     --- application     
@@ -107,10 +107,5 @@ temporarily store messages uploaded from queue module or sent by clients, remove
         failed  
 
 
-  6. process unit    
+  6. [process unit](https://github.com/rongk-team/bex-doc/blob/master/messaging/messaging%20module/components/process%20unit.md)     
      a work flow to control the messaging logic.   
-
-     1. translate the user id into device id  
-     2. use device id into connection id
-     3. if the connection is not active, use the push notification service by aws SNS
-     4. else send the message by long-lived connections
