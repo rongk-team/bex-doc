@@ -84,7 +84,7 @@ temporarily store messages uploaded from queue module or sent by clients, remove
     a set of servers which handle the long-lived connections.
     the detail of long-lived connections please read this document **[long-lived connections]** -- TBD.
 
-  3. push service worker    
+  3. [push service worker](https://github.com/rongk-team/bex-doc/blob/master/messaging/messaging%20module/components/push%20service%20worker.md)    
      a set of workers which send the push notification by AWS push notification service
      the detail of push service please read this document **[push service workers]** -- TBD.
 
