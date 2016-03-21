@@ -24,3 +24,5 @@ In-queue workers iterates users in the sub tasks then save messages into indepen
 Out-queue worker iterates message queues then send those messages to the message module and clear the queue.
 
 [Storage](components/storage.md)
+
+Defines entities.
